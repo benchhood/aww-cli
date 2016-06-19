@@ -1,0 +1,30 @@
+{
+  "name": "aww-cli",
+  "version": "1.0.0",
+  "description": "Awesomeness on your terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benchhood/aww-cli.git"
+  },
+  "keywords": [
+    "awesome",
+    "github",
+    "aww-data",
+    "aww",
+    "terminal"
+  ],
+  "author": "Venkata krishna <vkvenkat94@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benchhood/aww-cli/issues"
+  },
+  "homepage": "https://github.com/benchhood/aww-cli#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "random-js": "^1.0.8"
+  }
+}
