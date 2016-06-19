@@ -13,8 +13,10 @@ var datalib = new DataLibrary(json_data);
 program
   .version('0.0.1')
   .option('-a, --all', 'Show all categories')
-  .option('-c, --category [type]  ', 'Add the specified type of category','')//, 'node.js')
-  .option('-t, --topic [type]  ', 'Add the specified type of topic','')//, 'node.js')
+  .option('-z, --cat [type]  ', 'Add the specified type of category','')//, 'node.js')
+  .option('-y, --top [type]  ', 'Add the specified type of topic','')//, 'node.js')
+  .option('-t, --topic [type]  ', 'Get random projects under that topic','')//, 'node.js')
+  .option('-c, --category [type]  ', 'Get random projects under that category','')
   .option('-r, --random [type]', 'Number of random entries that will be displayed', '1')
 
   .parse(process.argv);
@@ -24,17 +26,17 @@ program
   console.log(resultList);
 }
 else if (program.category) {
-  console.log("IN CATEGORY")
-  // console.log(program.category)
-  console.log("RANDO"+program.random);
-  var resultList = datalib.getRandomEntryFromCategorySync(program.category, program.random);
-  console.log(resultList)
+        console.log("IN CATEGORY")
+        // console.log(program.category)
+        console.log("RANDO"+program.random);
+        var resultList = datalib.getRandomProjectFromCategorySync(program.category, program.random);
+        console.log(resultList)
 } else if (program.topic) {
-  console.log("IN TOPIC")
-  // console.log(program.topic)
-  console.log("RANDO"+program.random);
-  var resultList = datalib.getRandomEntryFromTopicSync(program.topic, program.random);
-  console.log(resultList)
+        console.log("IN TOPIC")
+        // console.log(program.topic)
+        console.log("RANDO"+program.random);
+        var resultList = datalib.getRandomProjectFromTopicSync(program.topic, program.random);
+        console.log(resultList)
 
 } else {
   // Default show help options

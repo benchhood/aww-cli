@@ -40,7 +40,7 @@ DataLibrary.prototype.getRandomEntryFromCategorySync = function(categoryFilter, 
 		var awesomeobjCategoryTrim = awesomeobj.category.toLowerCase().trim();
 		var categoryFilterTrim = categoryFilter.toLowerCase().trim()
 		if (awesomeobjCategoryTrim.indexOf(categoryFilterTrim) > -1) {
-			queryList.push('{'+'topic :' + awesomeobj.name + ', url : ' + awesomeobj.url+'}');
+			queryList.push('{'+' :' + awesomeobj.name + ', url : ' + awesomeobj.url+'}');
 	  }
 	});
 	if (randomCount < 0) {
@@ -48,6 +48,36 @@ DataLibrary.prototype.getRandomEntryFromCategorySync = function(categoryFilter, 
 	} else if (randomCount > queryList.length) {
 		randomCount = queryList.length;
 	}
+
+	resultList = array_rand.getRandomNumberInRangeSync(queryList, randomCount, 0	, queryList.length - 1);
+	return resultList;
+};
+
+
+/* This function is used to return all the entries 
+ * that matches a given category. It can be given by 
+ * the command "aww -c <category_name>" 
+ */
+DataLibrary.prototype.getRandomProjectFromCategorySync = function(categoryFilter, randomCount) {
+	
+	var queryList = [], resultList = []
+		console.log(categoryFilter.toLowerCase())
+		this.jsonData['awesomeList'].forEach(function(awesomeobj) {
+			var awesomeobjCategoryTrim = awesomeobj.category.toLowerCase().trim();
+			var categoryFilterTrim = categoryFilter.toLowerCase().trim()
+			//console.log(awesomeobj.data);
+			if(awesomeobjCategoryTrim.indexOf(categoryFilterTrim) > -1) {
+			awesomeobj.data.forEach(function(awesomeobjData) {
+//				console.log(awesomeobjData.url);
+				queryList.push(awesomeobjData.url);
+			});
+		  }
+		});
+		if (randomCount < 0) {
+			randomCount = 1;
+		} else if (randomCount > queryList.length) {
+			randomCount = queryList.length;
+		}
 
 	resultList = array_rand.getRandomNumberInRangeSync(queryList, randomCount, 0	, queryList.length - 1);
 	return resultList;
@@ -72,6 +102,35 @@ DataLibrary.prototype.getRandomEntryFromTopicSync = function(topicFilter, random
 	} else if (randomCount > queryList.length) {
 		randomCount = queryList.length;
 	}
+
+	resultList = array_rand.getRandomNumberInRangeSync(queryList, randomCount, 0	, queryList.length - 1);
+	return resultList;
+};
+
+/* This function is used to return all the entries 
+ * that matches a given Topic. It can be given by 
+ * the command "aww -c <Topic_name>" 
+ */
+DataLibrary.prototype.getRandomProjectFromTopicSync = function(topicFilter, randomCount) {
+	
+	var queryList = [], resultList = []
+		console.log(topicFilter.toLowerCase())
+		this.jsonData['awesomeList'].forEach(function(awesomeobj) {
+			var awesomeobjTopicTrim = awesomeobj.name.toLowerCase().trim();
+			var topicFilterTrim = topicFilter.toLowerCase().trim()
+			//console.log(awesomeobj.data);
+			if(awesomeobjTopicTrim.indexOf(topicFilterTrim) > -1) {
+			awesomeobj.data.forEach(function(awesomeobjData) {
+//				console.log(awesomeobjData.url);
+				queryList.push(awesomeobjData.url);
+			});
+		  }
+		});
+		if (randomCount < 0) {
+			randomCount = 1;
+		} else if (randomCount > queryList.length) {
+			randomCount = queryList.length;
+		}
 
 	resultList = array_rand.getRandomNumberInRangeSync(queryList, randomCount, 0	, queryList.length - 1);
 	return resultList;
