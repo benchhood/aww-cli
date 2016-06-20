@@ -25,6 +25,7 @@
   "homepage": "https://github.com/benchhood/aww-cli#readme",
   "dependencies": {
     "commander": "^2.9.0",
+    "opn": "^4.0.2",
     "random-js": "^1.0.8"
   }
 }
